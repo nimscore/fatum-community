@@ -19,10 +19,10 @@ import {
 	FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { useModal } from '@/hooks/use-modal-store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
@@ -35,14 +35,11 @@ const formSchema = z.object({
 	})
 })
 
-export const InitialModal = () => {
-	const [isMounted, setIsMounted] = useState(false)
-
+export const CreateServerModal = () => {
+	const { isOpen, onClose, type } = useModal()
+	const isModalOpen = isOpen && type === 'createServer'
 	const router = useRouter()
 
-	useEffect(() => {
-		setIsMounted(true)
-	}, [])
 	const form = useForm({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -58,18 +55,19 @@ export const InitialModal = () => {
 			await axios.post('/api/servers', values)
 			form.reset()
 			router.refresh()
-			window.location.reload()
+			onClose()
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	if (!isMounted) {
-		return null
+	const handleClose = () => {
+		form.reset()
+		onClose()
 	}
 
 	return (
-		<Dialog open>
+		<Dialog open={isModalOpen} onOpenChange={handleClose}>
 			<DialogContent className="bg-white text-black p-0 overflow-hidden">
 				<DialogHeader className="pt-8 px-6">
 					<DialogTitle className="text-2xl text-center font-bold">
@@ -112,7 +110,7 @@ export const InitialModal = () => {
 											<Input
 												disabled={isLoading}
 												className="bg-zinc-300/50 border-0 focus-visible:ring-offset-0"
-												placeholder="Enter Server Name"
+												placeholder="Название сервера"
 												{...field}
 											/>
 										</FormControl>
