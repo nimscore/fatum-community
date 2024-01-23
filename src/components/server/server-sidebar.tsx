@@ -88,7 +88,7 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
 						<ServerSearch
 							data={[
 								{
-									label: 'Text Channels',
+									label: 'Текстовые каналы',
 									type: 'channel',
 									data: textChannels?.map((channel) => ({
 										id: channel.id,
@@ -97,7 +97,7 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
 									}))
 								},
 								{
-									label: 'Voice Channels',
+									label: 'Голосовые каналы',
 									type: 'channel',
 									data: audioChannels?.map((channel) => ({
 										id: channel.id,
@@ -106,7 +106,7 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
 									}))
 								},
 								{
-									label: 'Video Channels',
+									label: 'Видео каналы',
 									type: 'channel',
 									data: videoChannels?.map((channel) => ({
 										id: channel.id,
@@ -115,7 +115,7 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
 									}))
 								},
 								{
-									label: 'Members',
+									label: 'Участники',
 									type: 'member',
 									data: members?.map((member) => ({
 										id: member.id,
