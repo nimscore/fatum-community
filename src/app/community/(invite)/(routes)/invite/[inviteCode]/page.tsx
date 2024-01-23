@@ -77,7 +77,7 @@ const InviteCodePage = async ({ params }: InviteCodePageProps) => {
 
 	if (!profile) {
 		return redirectToSignIn()
-		//TODO косяк с требование абсолютной ссылки формата redirect('/sign-in'), но пока пусть так
+		//TODO косяк с требованием абсолютной ссылки формата redirect('/sign-in'), но пока пусть так
 	}
 
 	if (!params.inviteCode) {
@@ -89,10 +89,10 @@ const InviteCodePage = async ({ params }: InviteCodePageProps) => {
 			inviteCode: params.inviteCode,
 			members: {
 				some: {
-					profileId: profile.id,
-				},
-			},
-		},
+					profileId: profile.id
+				}
+			}
+		}
 	})
 
 	if (existingServer) {
@@ -101,17 +101,17 @@ const InviteCodePage = async ({ params }: InviteCodePageProps) => {
 
 	const server = await db.server.update({
 		where: {
-			inviteCode: params.inviteCode,
+			inviteCode: params.inviteCode
 		},
 		data: {
 			members: {
 				create: [
 					{
-						profileId: profile.id,
-					},
-				],
-			},
-		},
+						profileId: profile.id
+					}
+				]
+			}
+		}
 	})
 
 	if (server) {
