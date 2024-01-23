@@ -8,7 +8,7 @@ import {
 	DialogDescription,
 	DialogFooter,
 	DialogHeader,
-	DialogTitle
+	DialogTitle,
 } from '@/components/ui/dialog'
 import {
 	Form,
@@ -16,7 +16,7 @@ import {
 	FormField,
 	FormItem,
 	FormLabel,
-	FormMessage
+	FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useModal } from '@/hooks/use-modal-store'
@@ -28,11 +28,11 @@ import * as z from 'zod'
 
 const formSchema = z.object({
 	name: z.string().min(1, {
-		message: 'Название сервера - обязательно'
+		message: 'Название сервера - обязательно',
 	}),
 	imageUrl: z.string().min(1, {
-		message: 'Логотип сервера - обязательный'
-	})
+		message: 'Логотип сервера - обязательный',
+	}),
 })
 
 export const CreateServerModal = () => {
@@ -44,8 +44,8 @@ export const CreateServerModal = () => {
 		resolver: zodResolver(formSchema),
 		defaultValues: {
 			name: '',
-			imageUrl: ''
-		}
+			imageUrl: '',
+		},
 	})
 
 	const isLoading = form.formState.isSubmitting
@@ -68,28 +68,28 @@ export const CreateServerModal = () => {
 
 	return (
 		<Dialog open={isModalOpen} onOpenChange={handleClose}>
-			<DialogContent className="bg-white text-black p-0 overflow-hidden">
-				<DialogHeader className="pt-8 px-6">
-					<DialogTitle className="text-2xl text-center font-bold">
+			<DialogContent className='bg-white text-black p-0 overflow-hidden'>
+				<DialogHeader className='pt-8 px-6'>
+					<DialogTitle className='text-2xl text-center font-bold'>
 						Создание нового сервера
 					</DialogTitle>
-					<DialogDescription className="text-center text-zinc-500">
+					<DialogDescription className='text-center text-zinc-500'>
 						Разнообразьте свой сервер, добавив ему название и логотип. Вы всегда
-						сможете это изменить позднее
+						сможете изменить это позднее
 					</DialogDescription>
 				</DialogHeader>
 				<Form {...form}>
-					<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-						<div className="space-y-8 px-6">
-							<div className="flex items-center justify-center text-center">
+					<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+						<div className='space-y-8 px-6'>
+							<div className='flex items-center justify-center text-center'>
 								<FormField
 									control={form.control}
-									name="imageUrl"
+									name='imageUrl'
 									render={({ field }) => (
 										<FormItem>
 											<FormControl>
 												<FileUpload
-													endpoint="serverImage"
+													endpoint='serverImage'
 													value={field.value}
 													onChange={field.onChange}
 												/>
@@ -100,17 +100,17 @@ export const CreateServerModal = () => {
 							</div>
 							<FormField
 								control={form.control}
-								name="name"
+								name='name'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
+										<FormLabel className='uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70'>
 											Название сервера
 										</FormLabel>
 										<FormControl>
 											<Input
 												disabled={isLoading}
-												className="bg-zinc-300/50 border-0 focus-visible:ring-offset-0"
-												placeholder="Название сервера"
+												className='bg-zinc-300/50 border-0 focus-visible:ring-offset-0'
+												placeholder='Название сервера'
 												{...field}
 											/>
 										</FormControl>
@@ -119,8 +119,8 @@ export const CreateServerModal = () => {
 								)}
 							/>
 						</div>
-						<DialogFooter className="bg-gray-100 px-6 py-4">
-							<Button variant="primary" disabled={isLoading}>
+						<DialogFooter className='bg-gray-100 px-6 py-4'>
+							<Button variant='primary' disabled={isLoading}>
 								Create
 							</Button>
 						</DialogFooter>
