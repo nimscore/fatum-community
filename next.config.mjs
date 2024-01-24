@@ -1,7 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		domains: ['utfs.io'],
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'utfs.io',
+				pathname: '**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'cdn.discordapp.com',
+				pathname: '**',
+			},
+		],
 	},
 }
 
