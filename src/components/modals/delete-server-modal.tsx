@@ -7,7 +7,7 @@ import {
 	DialogDescription,
 	DialogFooter,
 	DialogHeader,
-	DialogTitle
+	DialogTitle,
 } from '@/components/ui/dialog'
 import { useModal } from '@/hooks/use-modal-store'
 import axios from 'axios'
@@ -31,7 +31,7 @@ export const DeleteServerModal = () => {
 
 			onClose()
 			router.refresh()
-			router.push('/')
+			router.push('/community')
 		} catch (error) {
 			console.log(error)
 		} finally {
@@ -41,28 +41,28 @@ export const DeleteServerModal = () => {
 
 	return (
 		<Dialog open={isModalOpen} onOpenChange={onClose}>
-			<DialogContent className="bg-white text-black p-0 overflow-hidden">
-				<DialogHeader className="pt-8 px-6">
-					<DialogTitle className="text-2xl text-center font-bold">
+			<DialogContent className='bg-white text-black p-0 overflow-hidden'>
+				<DialogHeader className='pt-8 px-6'>
+					<DialogTitle className='text-2xl text-center font-bold'>
 						Удалить сервер
 					</DialogTitle>
-					<DialogDescription className="text-center text-zinc-500">
+					<DialogDescription className='text-center text-zinc-500'>
 						Вы уверены, что хотите{' '}
-						<span className="font-semibold text-rose-500 uppercase">
+						<span className='font-semibold text-rose-500 uppercase'>
 							удалить
 						</span>{' '}
-						<span className="font-semibold text-indigo-500">
+						<span className='font-semibold text-indigo-500'>
 							{server?.name}
 						</span>
 						?<div>Сервер будет удален без возможности восстановления</div>
 					</DialogDescription>
 				</DialogHeader>
-				<DialogFooter className="bg-gray-100 px-6 py-4">
-					<div className="flex items-center justify-between w-full">
-						<Button disabled={isLoading} variant="ghost" onClick={onClick}>
+				<DialogFooter className='bg-gray-100 px-6 py-4'>
+					<div className='flex items-center justify-between w-full'>
+						<Button disabled={isLoading} variant='ghost' onClick={onClick}>
 							Да
 						</Button>
-						<Button disabled={isLoading} onClick={onClose} variant="primary">
+						<Button disabled={isLoading} onClick={onClose} variant='primary'>
 							Нет
 						</Button>
 					</div>
