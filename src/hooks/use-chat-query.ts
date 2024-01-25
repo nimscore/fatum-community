@@ -14,7 +14,7 @@ export const useChatQuery = ({
 	queryKey,
 	apiUrl,
 	paramKey,
-	paramValue
+	paramValue,
 }: ChatQueryProps) => {
 	const { isConnected } = useSocket()
 
@@ -24,8 +24,8 @@ export const useChatQuery = ({
 				url: apiUrl,
 				query: {
 					cursor: pageParam,
-					[paramKey]: paramValue
-				}
+					[paramKey]: paramValue,
+				},
 			},
 			{ skipNull: true }
 		)
@@ -38,8 +38,9 @@ export const useChatQuery = ({
 		useInfiniteQuery({
 			queryKey: [queryKey],
 			queryFn: fetchMessages,
-			getNextPageParam: (lastPage) => lastPage?.nextCursor,
-			refetchInterval: isConnected ? false : 1000
+			getNextPageParam: lastPage => lastPage?.nextCursor,
+			refetchInterval: isConnected ? false : 1000,
+			initialPageParam: undefined,
 		})
 
 	return {
@@ -47,6 +48,6 @@ export const useChatQuery = ({
 		fetchNextPage,
 		hasNextPage,
 		isFetchingNextPage,
-		status
+		status,
 	}
 }
