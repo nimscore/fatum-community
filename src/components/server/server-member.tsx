@@ -8,8 +8,8 @@ import { useParams, useRouter } from 'next/navigation'
 
 const roleIconMap = {
 	[MemberRole.GUEST]: null,
-	[MemberRole.MODERATOR]: <ShieldCheck className="h-4 w-4 text-indigo-500" />,
-	[MemberRole.ADMIN]: <Crown className="h-4 w-4 text-rose-500" />
+	[MemberRole.MODERATOR]: <ShieldCheck className='h-4 w-4 text-indigo-500' />,
+	[MemberRole.ADMIN]: <Crown className='h-4 w-4 text-rose-500' />,
 }
 
 interface ServerMemberProps {
@@ -25,7 +25,7 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
 
 	const onClick = () => {
 		router.push(
-			`/community/servers/${params.serverId}/conversations/${member.id}`
+			`/community/servers/${params?.serverId}/conversations/${member.id}`
 		)
 	}
 
@@ -39,7 +39,7 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
 				)}
 			>
 				<UserAvatar
-					className="h-8 w-8 md:h-8 md:w-8"
+					className='h-8 w-8 md:h-8 md:w-8'
 					src={member.profile.imageUrl}
 				/>
 				<p
