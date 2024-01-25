@@ -19,20 +19,20 @@ const findConversation = async (memberOneId: string, memberTwoId: string) => {
 	try {
 		return await db.conversation.findFirst({
 			where: {
-				AND: [{ memberOneId: memberOneId }, { memberTwoId: memberTwoId }],
+				AND: [{ memberOneId: memberOneId }, { memberTwoId: memberTwoId }]
 			},
 			include: {
 				memberOne: {
 					include: {
-						profile: true,
-					},
+						profile: true
+					}
 				},
 				memberTwo: {
 					include: {
-						profile: true,
-					},
-				},
-			},
+						profile: true
+					}
+				}
+			}
 		})
 	} catch {
 		return null
@@ -47,20 +47,20 @@ const createNewConversation = async (
 		return await db.conversation.create({
 			data: {
 				memberOneId,
-				memberTwoId,
+				memberTwoId
 			},
 			include: {
 				memberOne: {
 					include: {
-						profile: true,
-					},
+						profile: true
+					}
 				},
 				memberTwo: {
 					include: {
-						profile: true,
-					},
-				},
-			},
+						profile: true
+					}
+				}
+			}
 		})
 	} catch {
 		return null
