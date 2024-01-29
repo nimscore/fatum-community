@@ -1,8 +1,8 @@
-import { ChatHeader } from '@/components/chat/chat-header'
-import { ChatInput } from '@/components/chat/chat-input'
-import { ChatMessages } from '@/components/chat/chat-messages'
+import { ChatHeader } from '@/components/(community)/chat/chat-header'
+import { ChatInput } from '@/components/(community)/chat/chat-input'
+import { ChatMessages } from '@/components/(community)/chat/chat-messages'
 import { MediaRoom } from '@/components/media-room'
-import { currentProfile } from '@/lib/current-profile'
+import { currentProfile } from '@/lib/(profile)/current-profile'
 import { db } from '@/lib/db'
 import { redirectToSignIn } from '@clerk/nextjs'
 import { ChannelType } from '@prisma/client'
@@ -55,7 +55,7 @@ const ChannelIdPage = async ({ params }: ChannelIdPageProps) => {
 							chatId={channel.id}
 							type="channel"
 							apiUrl="/api/messages"
-							socketUrl="/api/socket/messages"
+							socketUrl="/api/socket/(community)/messages"
 							socketQuery={{
 								channelId: channel.id,
 								serverId: channel.serverId
@@ -66,7 +66,7 @@ const ChannelIdPage = async ({ params }: ChannelIdPageProps) => {
 						<ChatInput
 							name={channel.name}
 							type="channel"
-							apiUrl="/api/socket/messages"
+							apiUrl="/api/socket/(community)/messages"
 							query={{
 								channelId: channel.id,
 								serverId: channel.serverId

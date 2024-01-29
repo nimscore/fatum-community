@@ -1,9 +1,9 @@
-import { InitialModal } from '@/components/modals/initial-modal'
+import { InitialModal } from '@/components/(community)/modals/initial-modal'
 import { db } from '@/lib/db'
-import { initialProfile } from '@/lib/initial-profile'
+import { initialProfile } from '@/lib/(profile)/initial-profile'
 import { redirect } from 'next/navigation'
 
-const SetupPage = async () => {
+const WelcomeCommunityPage = async () => {
 	const profile = await initialProfile()
 	const server = await db.server.findFirst({
 		where: {
@@ -21,4 +21,4 @@ const SetupPage = async () => {
 	return <InitialModal />
 }
 
-export default SetupPage
+export default WelcomeCommunityPage

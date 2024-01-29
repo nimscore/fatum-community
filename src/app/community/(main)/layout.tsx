@@ -1,4 +1,4 @@
-import { NavigationSideBar } from '@/components/navigation/navigation-sidebar'
+import { NavigationSideBar } from '@/components/(community)/navigation/navigation-sidebar'
 
 const CommunityLayout = async ({ children }: { children: React.ReactNode }) => {
 	return (

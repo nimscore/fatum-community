@@ -1,9 +1,9 @@
-import { ChatHeader } from '@/components/chat/chat-header'
-import { ChatInput } from '@/components/chat/chat-input'
-import { ChatMessages } from '@/components/chat/chat-messages'
+import { ChatHeader } from '@/components/(community)/chat/chat-header'
+import { ChatInput } from '@/components/(community)/chat/chat-input'
+import { ChatMessages } from '@/components/(community)/chat/chat-messages'
 import { MediaRoom } from '@/components/media-room'
-import { getOrCreateConversation } from '@/lib/conversation'
-import { currentProfile } from '@/lib/current-profile'
+import { getOrCreateConversation } from '@/lib/(community)/conversation'
+import { currentProfile } from '@/lib/(profile)/current-profile'
 import { db } from '@/lib/db'
 import { redirectToSignIn } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
@@ -74,7 +74,7 @@ const MemberIdPage = async ({ params, searchParams }: MemberIdPageProps) => {
 							apiUrl="/api/direct-messages"
 							paramKey="conversationId"
 							paramValue={conversation.id}
-							socketUrl="/api/socket/direct-messages"
+							socketUrl="/api/socket/(community)/direct-messages"
 							socketQuery={{
 								conversationId: conversation.id
 							}}
@@ -82,7 +82,7 @@ const MemberIdPage = async ({ params, searchParams }: MemberIdPageProps) => {
 						<ChatInput
 							name={otherMember.profile.name}
 							type="conversation"
-							apiUrl="/api/socket/direct-messages"
+							apiUrl="/api/socket/(community)/direct-messages"
 							query={{
 								conversationId: conversation.id
 							}}

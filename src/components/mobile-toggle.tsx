@@ -1,7 +1,7 @@
 import { Menu } from 'lucide-react'
 
-import { NavigationSideBar } from '@/components/navigation/navigation-sidebar'
-import { ServerSidebar } from '@/components/server/server-sidebar'
+import { NavigationSideBar } from '@/components/(community)/navigation/navigation-sidebar'
+import { ServerSidebar } from '@/components/(community)/server/server-sidebar'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 
