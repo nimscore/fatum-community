@@ -8,7 +8,7 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuTrigger
+	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
 export function ModeToggle() {
@@ -18,25 +18,25 @@ export function ModeToggle() {
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button
-					className="bg-transparent border-0"
-					variant="outline"
-					size="icon"
+					className='bg-transparent border-0'
+					variant='outline'
+					size='icon'
 				>
-					<Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-					<Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-					<span className="sr-only">Toggle theme</span>
+					<Sun className='h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />
+					<Moon className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
+					<span className='sr-only'>Toggle theme</span>
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end">
+			<DropdownMenuContent align='end'>
 				<DropdownMenuItem onClick={() => setTheme('light')}>
 					Светлая
 				</DropdownMenuItem>
 				<DropdownMenuItem onClick={() => setTheme('dark')}>
 					Тёмная
 				</DropdownMenuItem>
-				<DropdownMenuItem onClick={() => setTheme('system')}>
+				{/* <DropdownMenuItem onClick={() => setTheme('system')}>
 					Системная
-				</DropdownMenuItem>
+				</DropdownMenuItem> */}
 			</DropdownMenuContent>
 		</DropdownMenu>
 	)

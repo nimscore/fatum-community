@@ -1,6 +1,5 @@
-import { InitialModal } from '@/components/(community)/modals/initial-modal'
-import { db } from '@/lib/db'
 import { initialProfile } from '@/lib/(profile)/initial-profile'
+import { db } from '@/lib/db'
 import { redirect } from 'next/navigation'
 
 const WelcomeCommunityPage = async () => {
@@ -9,16 +8,17 @@ const WelcomeCommunityPage = async () => {
 		where: {
 			members: {
 				some: {
-					profileId: profile.id
-				}
-			}
-		}
+					profileId: profile.id,
+				},
+			},
+		},
 	})
 
 	if (server) {
 		return redirect(`/community/servers/${server.id}`)
 	}
-	return <InitialModal />
+	// return <InitialModal />
+	return null
 }
 
 export default WelcomeCommunityPage
