@@ -54,7 +54,9 @@ export const DeleteServerModal = () => {
 						<span className='font-semibold text-indigo-500'>
 							{server?.name}
 						</span>
-						?<div>Сервер будет удален без возможности восстановления</div>
+						?
+						<br />
+						Сервер будет удален без возможности восстановления
 					</DialogDescription>
 				</DialogHeader>
 				<DialogFooter className='bg-gray-100 px-6 py-4'>
