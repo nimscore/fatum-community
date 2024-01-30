@@ -2,7 +2,6 @@ import { ServerList } from '@/components/(community)/server/server-list'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { initialProfile } from '@/lib/(profile)/initial-profile'
 import { db } from '@/lib/db'
-import { redirect } from 'next/navigation'
 
 const WelcomeCommunityPage = async () => {
 	const profile = await initialProfile()
@@ -16,9 +15,9 @@ const WelcomeCommunityPage = async () => {
 		},
 	})
 
-	if (server) {
-		return redirect(`/community/servers/${server.id}`)
-	}
+	// if (server) {
+	// 	return redirect(`/community/servers/${server.id}`)
+	// }
 	// return <InitialModal />
 	const servers = await db.server.findMany()
 	return (

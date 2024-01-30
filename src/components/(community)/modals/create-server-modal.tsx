@@ -74,29 +74,48 @@ export const CreateServerModal = () => {
 						Создание нового сервера
 					</DialogTitle>
 					<DialogDescription className='text-center text-zinc-500'>
-						Разнообразьте свой сервер, добавив ему название и логотип. Вы всегда
-						сможете изменить это позднее
+						Разнообразьте свой сервер, добавив ему название, логотип и
+						уникальный баннер. Вы всегда сможете изменить это позднее
 					</DialogDescription>
 				</DialogHeader>
 				<Form {...form}>
 					<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
 						<div className='space-y-8 px-6'>
-							<div className='flex items-center justify-center text-center'>
-								<FormField
-									control={form.control}
-									name='imageUrl'
-									render={({ field }) => (
-										<FormItem>
-											<FormControl>
-												<FileUpload
-													endpoint='serverImage'
-													value={field.value}
-													onChange={field.onChange}
-												/>
-											</FormControl>
-										</FormItem>
-									)}
-								/>
+							<div className='flex justify-evenly'>
+								<div className='flex items-center justify-center text-center'>
+									<FormField
+										control={form.control}
+										name='imageUrl'
+										render={({ field }) => (
+											<FormItem>
+												<FormControl>
+													<FileUpload
+														endpoint='serverImage'
+														value={field.value}
+														onChange={field.onChange}
+													/>
+												</FormControl>
+											</FormItem>
+										)}
+									/>
+								</div>
+								<div className='flex items-center justify-center text-center'>
+									<FormField
+										control={form.control}
+										name='imageUrl'
+										render={({ field }) => (
+											<FormItem>
+												<FormControl>
+													<FileUpload
+														endpoint='serverImage'
+														value={field.value}
+														onChange={field.onChange}
+													/>
+												</FormControl>
+											</FormItem>
+										)}
+									/>
+								</div>
 							</div>
 							<FormField
 								control={form.control}

@@ -73,8 +73,8 @@ export const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
 										<Input
 											disabled={isLoading}
 											className='px-14 py-6 bg-zinc-200/90 dark:bg-zinc-700/75 border-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 text-zinc-600 dark:text-zinc-200'
-											placeholder={`Начать общаться в ${
-												type === 'conversation' ? name : '#' + name
+											placeholder={`Начать общаться ${
+												type === 'conversation' ? 'c ' + name : 'в #' + name
 											}`}
 											{...field}
 										/>

@@ -6,7 +6,7 @@ import {
 	CommandGroup,
 	CommandInput,
 	CommandItem,
-	CommandList
+	CommandList,
 } from '@/components/ui/command'
 import { Search } from 'lucide-react'
 import { useParams, useRouter } from 'next/navigation'
@@ -35,7 +35,7 @@ export const ServerSearch = ({ data }: ServerSearchProps) => {
 		const down = (e: KeyboardEvent) => {
 			if (e.key === ('k' || 'л') && (e.metaKey || e.ctrlKey)) {
 				e.preventDefault()
-				setOpen((open) => !open)
+				setOpen(open => !open)
 			}
 		}
 
@@ -45,7 +45,7 @@ export const ServerSearch = ({ data }: ServerSearchProps) => {
 
 	const onClick = ({
 		id,
-		type
+		type,
 	}: {
 		id: string
 		type: 'channel' | 'member'
@@ -69,18 +69,18 @@ export const ServerSearch = ({ data }: ServerSearchProps) => {
 		<>
 			<button
 				onClick={() => setOpen(true)}
-				className="group px-2 py-2 rounded-md flex items-center gap-x-2 w-full hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition"
+				className='group px-1 py-1 rounded-md flex items-center gap-x-2 w-full hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition'
 			>
-				<Search className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
-				<p className="font-semibold text-sm text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition">
+				<Search className='w-4 h-4 text-zinc-500 dark:text-zinc-400' />
+				<p className='font-semibold text-sm text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition'>
 					Поиск
 				</p>
-				<kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground ml-auto">
-					<span className="text-xs">⌘</span>K
+				<kbd className='pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground ml-auto'>
+					<span className='text-xs'>⌘</span>K
 				</kbd>
 			</button>
 			<CommandDialog open={open} onOpenChange={setOpen}>
-				<CommandInput placeholder="Поиск среди всех участников и каналов" />
+				<CommandInput placeholder='Поиск среди всех участников и каналов' />
 				<CommandList>
 					<CommandEmpty>Нет результатов</CommandEmpty>
 					{data.map(({ label, type, data }) => {
