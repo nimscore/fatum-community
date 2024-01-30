@@ -33,6 +33,9 @@ const formSchema = z.object({
 	imageUrl: z.string().min(1, {
 		message: 'Логотип сервера - обязательный',
 	}),
+	imageSrvUrl: z.string().min(1, {
+		message: 'Баннер сервера - обязательный',
+	}),
 })
 
 export const CreateServerModal = () => {
@@ -45,6 +48,7 @@ export const CreateServerModal = () => {
 		defaultValues: {
 			name: '',
 			imageUrl: '',
+			imageSrvUrl: '',
 		},
 	})
 
@@ -82,41 +86,52 @@ export const CreateServerModal = () => {
 					<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
 						<div className='space-y-8 px-6'>
 							<div className='flex justify-evenly'>
-								<div className='flex items-center justify-center text-center'>
-									<FormField
-										control={form.control}
-										name='imageUrl'
-										render={({ field }) => (
-											<FormItem>
-												<FormControl>
-													<FileUpload
-														endpoint='serverImage'
-														value={field.value}
-														onChange={field.onChange}
-													/>
-												</FormControl>
-											</FormItem>
-										)}
-									/>
+								<div className='text-center mb-2'>
+									<DialogDescription className='text-center text-zinc-500 mb-2'>
+										Логотип
+									</DialogDescription>
+									<div className='flex items-center justify-center text-center'>
+										<FormField
+											control={form.control}
+											name='imageUrl'
+											render={({ field }) => (
+												<FormItem>
+													<FormControl>
+														<FileUpload
+															endpoint='serverImage'
+															value={field.value}
+															onChange={field.onChange}
+														/>
+													</FormControl>
+												</FormItem>
+											)}
+										/>
+									</div>
 								</div>
-								<div className='flex items-center justify-center text-center'>
-									<FormField
-										control={form.control}
-										name='imageUrl'
-										render={({ field }) => (
-											<FormItem>
-												<FormControl>
-													<FileUpload
-														endpoint='serverImage'
-														value={field.value}
-														onChange={field.onChange}
-													/>
-												</FormControl>
-											</FormItem>
-										)}
-									/>
+								<div className='text-center mb-2'>
+									<DialogDescription className='text-center text-zinc-500 mb-2'>
+										Баннер (16x9)
+									</DialogDescription>
+									<div className='flex items-center justify-center text-center'>
+										<FormField
+											control={form.control}
+											name='imageSrvUrl'
+											render={({ field }) => (
+												<FormItem>
+													<FormControl>
+														<FileUpload
+															endpoint='serverBanner'
+															value={field.value}
+															onChange={field.onChange}
+														/>
+													</FormControl>
+												</FormItem>
+											)}
+										/>
+									</div>
 								</div>
 							</div>
+							
 							<FormField
 								control={form.control}
 								name='name'
@@ -140,7 +155,7 @@ export const CreateServerModal = () => {
 						</div>
 						<DialogFooter className='bg-gray-100 px-6 py-4'>
 							<Button variant='primary' disabled={isLoading}>
-								Create
+								Создать
 							</Button>
 						</DialogFooter>
 					</form>

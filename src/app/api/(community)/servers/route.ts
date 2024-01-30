@@ -7,7 +7,7 @@ import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
 	try {
-		const { name, imageUrl } = await req.json()
+		const { name, imageUrl, imageSrvUrl } = await req.json()
 		const profile = await currentProfile()
 
 		if (!profile) {
@@ -19,6 +19,7 @@ export async function POST(req: Request) {
 				profileId: profile.id,
 				name,
 				imageUrl,
+				imageSrvUrl,
 				inviteCode: uuidv4(),
 				channels: {
 					create: [{ name: 'general', profileId: profile.id }]

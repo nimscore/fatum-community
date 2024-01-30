@@ -6,10 +6,12 @@ import { currentProfile } from '@/lib/(profile)/current-profile'
 import { db } from '@/lib/db'
 import { ChannelType, MemberRole } from '@prisma/client'
 import { Crown, Hash, Mic, ShieldCheck, Video } from 'lucide-react'
+import Image from 'next/image'
 import { redirect } from 'next/navigation'
 
 interface ServerSidebarProps {
 	serverId: string
+	imageSrvUrl?: string
 }
 
 const iconMap = {
@@ -26,7 +28,7 @@ const roleIconMap = {
 	[MemberRole.ADMIN]: <Crown className='h-4 w-4 mr-2 text-rose-500' />,
 }
 
-export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
+export const ServerSidebar = async ({ serverId, imageSrvUrl }: ServerSidebarProps) => {
 	const profile = await currentProfile()
 
 	if (!profile) {
@@ -79,9 +81,19 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
 		<>
 			<div className='flex flex-col h-full text-primary w-full dark:bg-[#2B2D31] bg-[#F2F3F5]'>
 				<ServerHeader server={server} role={role} />
-
-				<ScrollArea className='flex-1 px-3'>
-					<div className='mt-2'></div>
+				<div
+					className='relative aspect-video overflow-hidden flex items-center bg-rose-600 w-100% h-auto'>
+					<Image
+						className='object-cover'
+						sizes='100%'
+						fill
+						priority
+						src={server.imageSrvUrl}
+						alt='Server Banner'
+					/>
+				</div>
+				<ScrollArea className='flex-1 pt-1 px-3'>
+					
 					{!!textChannels?.length && (
 						<div className='mb-2'>
 							<ServerSection

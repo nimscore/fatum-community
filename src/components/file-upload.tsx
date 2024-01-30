@@ -3,14 +3,14 @@
 import { FileIcon, X } from 'lucide-react'
 import Image from 'next/image'
 
-import { UploadDropzone } from '@/lib/uploadthing'
+import { UploadButton, UploadDropzone, Uploader } from '@/lib/uploadthing'
 
 import '@uploadthing/react/styles.css'
 
 interface FileUploadProps {
 	onChange: (url?: string) => void
 	value: string
-	endpoint: 'messageFile' | 'serverImage'
+	endpoint: 'messageFile' | 'serverImage' | 'serverBanner'
 }
 
 export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
@@ -18,15 +18,14 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
 
 	if (value && fileType !== 'pdf') {
 		return (
-			<div className='relative h-20 w-20'>
+			<div className='relative aspect-video w-32 h-18'>
 				<Image
 					sizes='100%'
 					fill
 					src={value}
 					alt='Upload'
-					className='rounded-full'
+					className='object-cover rounded-md'
 				/>
-				dasdas
 				<button
 					onClick={() => onChange('')}
 					className='bg-rose-500 text-white p-1 rounded-full absolute top-0 right-0 shadow-sm'
@@ -62,8 +61,7 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
 	}
 
 	return (
-		<UploadDropzone
-			className='w-40 h-40'
+		<UploadButton
 			endpoint={endpoint}
 			onClientUploadComplete={res => {
 				onChange(res?.[0].url)

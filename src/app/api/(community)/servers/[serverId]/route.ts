@@ -33,7 +33,7 @@ export async function PATCH(
 ) {
 	try {
 		const profile = await currentProfile()
-		const { name, imageUrl } = await req.json()
+		const { name, imageUrl, imageSrvUrl } = await req.json()
 
 		if (!profile) {
 			return new NextResponse('Не авторизован', { status: 401 })
@@ -46,7 +46,8 @@ export async function PATCH(
 			},
 			data: {
 				name,
-				imageUrl
+				imageUrl,
+				imageSrvUrl
 			}
 		})
 
